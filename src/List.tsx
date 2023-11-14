@@ -15,13 +15,6 @@ function List() {
 
   const add = () => {
     const r = Math.random().toString().slice(-3)
-    // setQuestionList(
-    //   questionList.concat({
-    //     id: 'q' + r,
-    //     title: '问卷' + r,
-    //     isPublished: false,
-    //   })
-    // )
     setQuestionList(
       produce((draft: { id: string; title: string; isPublished: boolean }[]) => {
         draft.push({

@@ -1,7 +1,5 @@
 import React from 'react'
-import QuestionList from './pages'
 import List from './List'
-import logo from './logo.svg'
 import './App.css'
 
 function App() {
