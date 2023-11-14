@@ -13,6 +13,8 @@ type PropsType = {
 function QuestionCard(props: PropsType) {
   const { _id } = props
 
+  console.log('id')
+
   return <div>{_id}</div>
 }
 
