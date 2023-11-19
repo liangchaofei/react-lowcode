@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import produce from 'immer'
-import QuestionCard from '../components/QuestionCard'
+import QuestionCard from '../../components/QuestionCard'
 import styles from './List.module.scss'
 
 const rawQuestionList = [
