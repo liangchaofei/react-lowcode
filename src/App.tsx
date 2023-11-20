@@ -1,13 +1,11 @@
 import React from 'react'
-import List from './pages/manage/List'
+import { RouterProvider } from 'react-router-dom'
+import routerConfig from './router'
+import 'antd/dist/reset.css'
 import './App.css'
 
 function App() {
-  return (
-    <div className="App">
-      <List />
-    </div>
-  )
+  return <RouterProvider router={routerConfig} />
 }
 
 export default App

@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import produce from 'immer'
+import { Typography } from 'antd'
 import QuestionCard from '../../components/QuestionCard'
-import styles from './List.module.scss'
+import styles from './common.module.scss'
 
 const rawQuestionList = [
   {
@@ -10,7 +11,7 @@ const rawQuestionList = [
     isPublished: false,
     isStar: true,
     answerCount: 1,
-    createAt: '3月10日 10:11',
+    createdAt: '3月10日 10:11',
   },
   {
     _id: 'q2',
@@ -18,7 +19,7 @@ const rawQuestionList = [
     isPublished: false,
     isStar: false,
     answerCount: 10,
-    createAt: '3月19日 10:19',
+    createdAt: '3月19日 10:19',
   },
   {
     _id: 'q3',
@@ -26,9 +27,11 @@ const rawQuestionList = [
     isPublished: true,
     isStar: true,
     answerCount: 1,
-    createAt: '3月15日 10:21',
+    createdAt: '3月15日 10:21',
   },
 ]
+
+const { Title } = Typography
 function List() {
   const [questionList, setQuestionList] = useState(rawQuestionList)
 
@@ -72,12 +75,12 @@ function List() {
     <>
       <div className={styles.header}>
         <div className={styles.left}>
-          <h3>我的问卷</h3>
+          <Title level={3}>我的问卷</Title>
         </div>
         <div className={styles.right}>搜索</div>
       </div>
       <div className={styles.content}>
-        {questionList?.map(q => {
+        {questionList.length > 0 && questionList?.map(q => {
           const { _id } = q
           return <QuestionCard key={_id} {...q} />
         })}

@@ -1,4 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+import { Button, Space, Divider, Tag, Popconfirm, Modal, message } from 'antd'
+import {
+  EditOutlined,
+  LineChartOutlined,
+  StarOutlined,
+  CopyOutlined,
+  DeleteOutlined,
+  ExclamationCircleOutlined,
+} from '@ant-design/icons'
 import styles from './QuestionCard.module.scss'
 
 type PropsType = {
@@ -7,35 +17,100 @@ type PropsType = {
   isPublished: boolean
   isStar: boolean
   answerCount: number
-  createAt: string
+  createdAt: string
 }
 
-function QuestionCard(props: PropsType) {
-  const { _id, title, createAt, answerCount, isPublished } = props
+const { confirm } = Modal
 
-  console.log('id')
+function QuestionCard(props: PropsType) {
+  const nav = useNavigate()
+
+  const { _id, title, createdAt, answerCount, isPublished, isStar } = props
+
+  // 修改 标星
+  const [isStarState, setIsStarState] = useState(isStar)
+
+
+  function del() {
+    confirm({
+      title: '确定删除该问卷？',
+      icon: <ExclamationCircleOutlined />,
+      // onOk: deleteQuestion,
+    })
+  }
 
   return (
     <div className={styles.container}>
       <div className={styles.title}>
         <div className={styles.left}>
-          <a href="#">{title}</a>
+          <Link to={isPublished ? `/question/stat/${_id}` : `/question/edit/${_id}`}>
+            <Space>
+              {isStarState && <StarOutlined style={{ color: 'red' }} />}
+              {title}
+            </Space>
+          </Link>
         </div>
         <div className={styles.right}>
-          {isPublished ? <span>已发布</span> : <span>未发布</span>}
-          <span>答卷： {answerCount}</span>
-          <span>{createAt}</span>
+          <Space>
+            {isPublished ? <Tag color="processing">已发布</Tag> : <Tag>未发布</Tag>}
+            <span>答卷: {answerCount}</span>
+            <span>{createdAt}</span>
+          </Space>
         </div>
       </div>
+      <Divider style={{ margin: '12px 0' }} />
       <div className={styles['button-container']}>
         <div className={styles.left}>
-          <button>编辑问卷</button>
-          <button>数据统计</button>
+          <Space>
+            <Button
+              icon={<EditOutlined />}
+              type="text"
+              size="small"
+              onClick={() => nav(`/question/edit/${_id}`)}
+            >
+              编辑问卷
+            </Button>
+            <Button
+              icon={<LineChartOutlined />}
+              type="text"
+              size="small"
+              onClick={() => nav(`/question/stat/${_id}`)}
+              disabled={!isPublished}
+            >
+              问卷统计
+            </Button>
+          </Space>
         </div>
         <div className={styles.right}>
-          <button>标星</button>
-          <button>复制</button>
-          <button>删除</button>
+          <Space>
+            <Button
+              type="text"
+              icon={<StarOutlined />}
+              size="small"
+              // onClick={changeStar}
+              // disabled={changeStarLoading}
+            >
+              {isStarState ? '取消标星' : '标星'}
+            </Button>
+            <Popconfirm
+              title="确定复制该问卷？"
+              okText="确定"
+              cancelText="取消"
+            >
+              <Button type="text" icon={<CopyOutlined />} size="small">
+                复制
+              </Button>
+            </Popconfirm>
+            <Button
+              type="text"
+              icon={<DeleteOutlined />}
+              size="small"
+              onClick={del}
+              // disabled={deleteLoading}
+            >
+              删除
+            </Button>
+          </Space>
         </div>
       </div>
     </div>
