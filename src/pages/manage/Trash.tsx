@@ -3,7 +3,7 @@ import { useTitle } from 'ahooks'
 import { Typography, Empty, Table, Tag, Button, Space, Modal, Spin, message } from 'antd'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import { useRequest } from 'ahooks'
-// import ListSearch from '../../components/ListSearch'
+import ListSearch from '../../components/ListSearch'
 // import ListPage from '../../components/ListPage'
 // import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
 // import { updateQuestionService, deleteQuestionsService } from '../../services/question'
@@ -119,8 +119,7 @@ const Trash: FC = () => {
           <Title level={3}>回收站</Title>
         </div>
         <div className={styles.right}>
-                  {/* <ListSearch /> */}
-                  搜索
+                  <ListSearch />
         </div>
       </div>
       <div className={styles.content}>
