@@ -1,12 +1,22 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { Button, Space, Divider, message } from 'antd';
+import { useRequest} from 'ahooks';
+import { createQuestionService } from '../services/question';
 import { PlusOutlined, BarsOutlined, StarOutlined, DeleteOutlined } from '@ant-design/icons'
 import styles from './ManageLayout.module.scss'
 
 const ManageLayout: FC = () => {
     const nav = useNavigate()
     const { pathname } = useLocation()
+
+    const { loading, run: handleCreateQuestion } = useRequest(createQuestionService, {
+        manual: true,
+        onSuccess(result) {
+            nav(`/question/edit/${result.id}`)
+            message.success('创建成功')
+        },
+    })
 
     return (
         <div className={styles.container}>
@@ -16,6 +26,8 @@ const ManageLayout: FC = () => {
                     type="primary"
                     size="large"
                     icon={<PlusOutlined />}
+                    onClick={handleCreateQuestion}
+                    disabled={loading}
                 >
                     创建问卷
                 </Button>

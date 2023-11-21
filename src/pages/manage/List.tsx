@@ -1,41 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import produce from 'immer'
-import { Typography } from 'antd'
+import { Typography, Spin } from 'antd'
 import QuestionCard from '../../components/QuestionCard'
 import ListSearch from '../../components/ListSearch'
+import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
 import styles from './common.module.scss'
 
-const rawQuestionList = [
-  {
-    _id: 'q1',
-    title: '问卷1',
-    isPublished: false,
-    isStar: true,
-    answerCount: 1,
-    createdAt: '3月10日 10:11',
-  },
-  {
-    _id: 'q2',
-    title: '问卷2',
-    isPublished: false,
-    isStar: false,
-    answerCount: 10,
-    createdAt: '3月19日 10:19',
-  },
-  {
-    _id: 'q3',
-    title: '问卷3',
-    isPublished: true,
-    isStar: true,
-    answerCount: 1,
-    createdAt: '3月15日 10:21',
-  },
-]
+
 
 const { Title } = Typography
 function List() {
-  const [questionList, setQuestionList] = useState(rawQuestionList)
 
+  const { data = {}, loading } = useLoadQuestionListData()
+  const { list = [], total = 0} = data;
+  
   // const edit = (id: string) => {
   //   console.log(id)
   // }
@@ -83,7 +61,8 @@ function List() {
         </div>
       </div>
       <div className={styles.content}>
-        {questionList.length > 0 && questionList?.map(q => {
+        { loading && <div style={{ textAlign: 'center'}}><Spin /></div>}
+        {(!loading && list.length > 0) && list?.map((q: any) => {
           const { _id } = q
           return <QuestionCard key={_id} {...q} />
         })}
