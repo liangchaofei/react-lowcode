@@ -4,40 +4,15 @@ import { Typography, Empty, Table, Tag, Button, Space, Modal, Spin, message } fr
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import { useRequest } from 'ahooks'
 import ListSearch from '../../components/ListSearch'
-// import ListPage from '../../components/ListPage'
-// import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
+import ListPage from '../../components/ListPage'
+import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
 // import { updateQuestionService, deleteQuestionsService } from '../../services/question'
 import styles from './common.module.scss'
 
 const { Title } = Typography
 const { confirm } = Modal
 
-const list = [
-    {
-      _id: 'q1',
-      title: '问卷1',
-      isPublished: false,
-      isStar: true,
-      answerCount: 1,
-      createdAt: '3月10日 10:11',
-    },
-    {
-      _id: 'q2',
-      title: '问卷2',
-      isPublished: false,
-      isStar: true,
-      answerCount: 10,
-      createdAt: '3月19日 10:19',
-    },
-    {
-      _id: 'q3',
-      title: '问卷3',
-      isPublished: true,
-      isStar: true,
-      answerCount: 1,
-      createdAt: '3月15日 10:21',
-    },
-]
+
 
 const Trash: FC = () => {
   useTitle('低代码问卷 - 回收站')
@@ -46,7 +21,8 @@ const Trash: FC = () => {
   // 记录选中的 id
   const [selectedIds, setSelectedIds] = useState<string[]>([])
 
-  const loading = false;
+  const { data = {}, loading } = useLoadQuestionListData({ isDeleted: true })
+  const { list = [], total = 0 } = data
 
 
 
@@ -132,8 +108,7 @@ const Trash: FC = () => {
         {list.length > 0 && TableElem}
       </div>
       <div className={styles.footer}>
-              {/* <ListPage total={total} /> */}
-              footer
+              <ListPage total={total} /> 
       </div>
     </>
   )

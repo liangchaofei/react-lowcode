@@ -9,6 +9,8 @@ import {
   DeleteOutlined,
   ExclamationCircleOutlined,
 } from '@ant-design/icons'
+import { useRequest } from 'ahooks'
+import { updateQuestionService } from '../services/question'
 import styles from './QuestionCard.module.scss'
 
 type PropsType = {
@@ -29,6 +31,18 @@ function QuestionCard(props: PropsType) {
 
   // 修改 标星
   const [isStarState, setIsStarState] = useState(isStar)
+  const { loading: changeStarLoading, run: changeStar } = useRequest(
+    async () => {
+      await updateQuestionService(_id, { isStar: !isStarState })
+    },
+    {
+      manual: true,
+      onSuccess() {
+        setIsStarState(!isStarState) // 更新 state
+        message.success('已更新')
+      },
+    }
+  )
 
 
   function del() {
@@ -87,7 +101,7 @@ function QuestionCard(props: PropsType) {
               type="text"
               icon={<StarOutlined />}
               size="small"
-              // onClick={changeStar}
+              onClick={changeStar}
               // disabled={changeStarLoading}
             >
               {isStarState ? '取消标星' : '标星'}

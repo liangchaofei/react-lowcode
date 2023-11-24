@@ -3,8 +3,8 @@ import { useTitle } from 'ahooks'
 import { Typography, Empty, Spin } from 'antd'
 import QuestionCard from '../../components/QuestionCard'
 import ListSearch from '../../components/ListSearch'
-// import ListPage from '../../components/ListPage'
-// import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
+import ListPage from '../../components/ListPage'
+import useLoadQuestionListData from '../../hooks/useLoadQuestionListData'
 import styles from './common.module.scss'
 
 const { Title } = Typography
@@ -39,9 +39,8 @@ const list = [
 const Star: FC = () => {
   useTitle('低代码问卷 - 星标问卷')
 
-//   const { data = {}, loading } = useLoadQuestionListData({ isStar: true })
-//   const { list = [], total = 0 } = data
-  const loading = false;
+  const { data = {}, loading } = useLoadQuestionListData({ isStar: true })
+  const { list = [], total = 0 } = data
 
   return (
     <>
@@ -66,9 +65,9 @@ const Star: FC = () => {
             return <QuestionCard key={_id} {...q} />
           })}
       </div>
-      {/* <div className={styles.footer}>
+      <div className={styles.footer}>
         <ListPage total={total} />
-      </div> */}
+      </div>
     </>
   )
 }
