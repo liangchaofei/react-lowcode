@@ -42,13 +42,25 @@ const { run: recover } = useRequest(
     },
   }
 )
+   // 删除
+   const { run: deleteQuestion } = useRequest(
+    async () => await deleteQuestionsService(selectedIds),
+    {
+      manual: true,
+      onSuccess() {
+        message.success('删除成功')
+        refresh()
+        setSelectedIds([])
+      },
+    }
+  )
   
   function del() {
     confirm({
       title: '确认彻底删除该问卷？',
       icon: <ExclamationCircleOutlined />,
       content: '删除以后不可以找回',
-    //   onOk: deleteQuestion,
+      onOk: deleteQuestion,
     })
   }
 
