@@ -75,7 +75,9 @@ function QuestionCard(props: PropsType) {
       onOk: deleteQuestion,
     })
   }
-
+// 已经删除的问卷，不要再渲染卡片了
+  if (isDeletedState) return null
+  
   return (
     <div className={styles.container}>
       <div className={styles.title}>
@@ -125,7 +127,7 @@ function QuestionCard(props: PropsType) {
               icon={<StarOutlined />}
               size="small"
               onClick={changeStar}
-              // disabled={changeStarLoading}
+              disabled={changeStarLoading}
             >
               {isStarState ? '取消标星' : '标星'}
             </Button>
