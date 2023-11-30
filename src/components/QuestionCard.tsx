@@ -10,7 +10,7 @@ import {
   ExclamationCircleOutlined,
 } from '@ant-design/icons'
 import { useRequest } from 'ahooks'
-import { updateQuestionService } from '../services/question'
+import { updateQuestionService, duplicateQuestionService } from '../services/question'
 import styles from './QuestionCard.module.scss'
 
 type PropsType = {
@@ -44,12 +44,35 @@ function QuestionCard(props: PropsType) {
     }
   )
 
+  // 复制
+  const { loading: duplicateLoading, run: duplicate } = useRequest(
+    async () => await duplicateQuestionService(_id),
+    {
+      manual: true,
+      onSuccess(result) {
+        message.success('复制成功')
+        nav(`/question/edit/${result.id}`) // 跳转到问卷编辑页
+      },
+    }
+  )
 
+ // 删除
+ const [isDeletedState, setIsDeletedState] = useState(false)
+ const { loading: deleteLoading, run: deleteQuestion } = useRequest(
+   async () => await updateQuestionService(_id, { isDeleted: true }),
+   {
+     manual: true,
+     onSuccess() {
+       message.success('删除成功')
+       setIsDeletedState(true)
+     },
+   }
+ )
   function del() {
     confirm({
       title: '确定删除该问卷？',
       icon: <ExclamationCircleOutlined />,
-      // onOk: deleteQuestion,
+      onOk: deleteQuestion,
     })
   }
 
@@ -110,8 +133,9 @@ function QuestionCard(props: PropsType) {
               title="确定复制该问卷？"
               okText="确定"
               cancelText="取消"
+              onConfirm={duplicate}
             >
-              <Button type="text" icon={<CopyOutlined />} size="small">
+              <Button type="text" icon={<CopyOutlined />} size="small" loading={duplicateLoading}>
                 复制
               </Button>
             </Popconfirm>
@@ -120,7 +144,7 @@ function QuestionCard(props: PropsType) {
               icon={<DeleteOutlined />}
               size="small"
               onClick={del}
-              // disabled={deleteLoading}
+              disabled={deleteLoading}
             >
               删除
             </Button>
