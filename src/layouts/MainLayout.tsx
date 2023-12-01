@@ -1,13 +1,17 @@
 import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Layout, Spin } from 'antd'
+import useLoadUserData from '../hooks/useLoadUserData'
 import Logo from '../components/Logo'
 import UserInfo from '../components/UserInfo'
+import useNavPage from '../hooks/useNavPage'
 import styles from './MainLayout.module.scss'
 
 const { Header, Content, Footer } = Layout
 
 const MainLayout: FC = () => {
+    const { waitingUserData } = useLoadUserData()
+    useNavPage(waitingUserData)
     return (
         <Layout>
             <Header className={styles.header}>
@@ -20,7 +24,13 @@ const MainLayout: FC = () => {
             </Header>
             <Layout className={styles.main}>
                 <Content>
-                    <Outlet />
+                    {waitingUserData ? (
+                        <div style={{ textAlign: 'center', marginTop: '60px' }}>
+                        <Spin />
+                        </div>
+                    ) : (
+                        <Outlet />
+                    )}
                 </Content>
             </Layout>
             <Footer className={styles.footer}>低代码问卷 &copy;2023. Created by curry</Footer>
