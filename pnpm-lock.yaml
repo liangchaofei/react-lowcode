@@ -41,6 +41,9 @@ dependencies:
   axios:
     specifier: ^1.6.2
     version: 1.6.2
+  classnames:
+    specifier: ^2.3.2
+    version: 2.3.2
   immer:
     specifier: ^9.x
     version: 9.0.21
