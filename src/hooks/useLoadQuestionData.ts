@@ -42,7 +42,7 @@ function useLoadQuestionData() {
     }
 
     // 把 componentList 存储到 Redux store 中
-    dispatch(resetComponents({ componentList }))
+    dispatch(resetComponents({ componentList, selectedId }))
 
     // 把 pageInfo 存储到 redux store
     // dispatch(resetPageInfo({ title, desc, js, css, isPublished }))
