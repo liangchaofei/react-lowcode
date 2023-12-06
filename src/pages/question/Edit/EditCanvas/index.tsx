@@ -1,19 +1,28 @@
 import React, { FC } from 'react'
 import { Spin } from 'antd'
 import useGetComponentInfo from '../../../../hooks/useGetComponentInfo'
-// // 临时静态展示一下 Title Input 的效果
-import QuestionTitle from '../../../../components/QuestionComponents/QuestionTitle/Component'
-import QuestionInput from '../../../../components/QuestionComponents/QuestionInput/Component'
+import { getComponentConfByType } from '../../../../components/QuestionComponents'
+import {
+    ComponentInfoType,
+} from '../../../../store/componentsReducer'
 import styles from './index.module.scss'
 
 type PropsType = {
     loading: boolean
 }
 
+function genComponent(componentInfo: ComponentInfoType) {
+    const { type, props } = componentInfo // 每个组件的信息，是从 redux store 获取的（服务端获取）
+  
+    const componentConf = getComponentConfByType(type)
+    if (componentConf == null) return null
+  
+    const { Component } = componentConf
+    return <Component {...props} />
+}
   
 const Edit: FC<PropsType> = ({ loading }) => {
     const { componentList } = useGetComponentInfo()
-    console.log('componentList', componentList)
     if (loading) {
         return (
           <div style={{ textAlign: 'center', marginTop: '24px' }}>
@@ -24,8 +33,17 @@ const Edit: FC<PropsType> = ({ loading }) => {
     
     return (
         <div className={styles.canvas}>
-            <QuestionTitle />
-            <QuestionInput />
+            {
+                componentList?.map(item => {
+                    return (
+                        <div key={item.fe_id} className={styles['component-wrapper']}>
+                            <div className={styles.component}>
+                                { genComponent(item)}
+                            </div>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }
