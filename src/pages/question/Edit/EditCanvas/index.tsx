@@ -8,6 +8,7 @@ import {
     ComponentInfoType,
     changeSelectedId
 } from '../../../../store/componentsReducer'
+import useBindCanvasKeyPress from '../../../../hooks/useBindCanvasKeyPress'
 import styles from './index.module.scss'
 
 type PropsType = {
@@ -34,6 +35,9 @@ const Edit: FC<PropsType> = ({ loading }) => {
         event.stopPropagation() // 阻止冒泡
         dispatch(changeSelectedId(id))
     }
+
+    // 绑定快捷键
+    useBindCanvasKeyPress()
     
     if (loading) {
         return (
@@ -47,13 +51,15 @@ const Edit: FC<PropsType> = ({ loading }) => {
         <div className={styles.canvas}>
             {
                 componentList?.map(item => {
-                    const {fe_id } = item;
+                    const {fe_id,isLocked } = item;
                      // 拼接 class name
                     const wrapperDefaultClassName = styles['component-wrapper']
                     const selectedClassName = styles.selected
+                    const lockedClassName = styles.locked
                     const wrapperClassName = classNames({
                         [wrapperDefaultClassName]: true,
                         [selectedClassName]: fe_id === selectedId,
+                        [lockedClassName]: isLocked,
                     })
 
                     return (
