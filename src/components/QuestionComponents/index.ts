@@ -11,6 +11,7 @@ export type ComponentConfType = {
   title: string
   type: string
   Component: FC<ComponentPropsType>
+  PropComponent: FC<ComponentPropsType>
   defaultProps: ComponentPropsType
 }
 
@@ -29,7 +30,7 @@ export const componentConfGroup = [
   {
     groupId: 'textGroup',
     groupName: '文本显示',
-    components: [,QuestionTitleConf],
+    components: [QuestionTitleConf],
   },
   {
     groupId: 'inputGroup',
