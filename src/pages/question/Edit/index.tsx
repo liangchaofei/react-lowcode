@@ -9,7 +9,6 @@ import { changeSelectedId } from '../../../store/componentsReducer'
 import styles from './index.module.scss'
 
 const Edit: FC = () => {
-    console.log('Edit')
     const { loading } = useLoadQuestionData()
     const dispatch = useDispatch()
 

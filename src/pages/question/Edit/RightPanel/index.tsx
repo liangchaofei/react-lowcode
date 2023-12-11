@@ -44,7 +44,7 @@ const RightPanel: FC = () => {
       ]
 
     return (
-        <Tabs items={tabsItems}></Tabs>
+        <Tabs activeKey={activeKey} items={tabsItems}></Tabs>
     )
 }
 

@@ -13,6 +13,7 @@ export default configureStore({
     reducer: {
       user: userReducer,
       components: componentsReducer,
+      pageInfo: pageInfoReducer,
     },
 })
   

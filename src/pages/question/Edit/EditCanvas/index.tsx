@@ -28,7 +28,6 @@ function genComponent(componentInfo: ComponentInfoType) {
 const Edit: FC<PropsType> = ({ loading }) => {
     const { componentList, selectedId } = useGetComponentInfo()
     const dispatch = useDispatch()
-    console.log('componentList', componentList)
 
     // 点击组件，选中
     function handleClick(event: MouseEvent, id: string) {
