@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useRequest } from 'ahooks'
 import { useDispatch } from 'react-redux'
-import { getQuestionService } from '../services/question'
-import { resetComponents } from '../store/componentsReducer'
-import { resetPageInfo } from '../store/pageInfoReducer'
+import { getQuestionService } from '@/services/question'
+import { resetComponents } from '@/store/componentsReducer'
+import { resetPageInfo } from '@/store/pageInfoReducer'
 
 function useLoadQuestionData() {
   const { id = '' } = useParams()

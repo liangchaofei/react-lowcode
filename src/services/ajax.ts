@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { message } from 'antd'
-import { getToken } from '../utils/user-token'
+import { getToken } from '@/utils/user-token'
 
 const instance = axios.create({
   timeout: 10 * 1000,

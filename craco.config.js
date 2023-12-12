@@ -1,5 +1,9 @@
+const path = require('path')
 module.exports = {
-    webpack: {
+  webpack: {
+    alias: {
+      "@": path.resolve(__dirname, "src"),
+      },
       configure(webpackConfig) {
         if (webpackConfig.mode === 'production') {
           // 抽离公共代码，只在生产环境
@@ -30,7 +34,6 @@ module.exports = {
         return webpackConfig
       },
     },
-  
     devServer: {
       port: 8000, // B 端，前端
       proxy: {

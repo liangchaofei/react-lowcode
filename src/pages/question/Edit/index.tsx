@@ -4,8 +4,8 @@ import EditCanvas from './EditCanvas'
 import LeftPanel from './LeftPanel'
 import RightPanel from './RightPanel'
 import EditHeader from './EditHeader'
-import useLoadQuestionData from '../../../hooks/useLoadQuestionData'
-import { changeSelectedId } from '../../../store/componentsReducer'
+import useLoadQuestionData from '@/hooks/useLoadQuestionData'
+import { changeSelectedId } from '@/store/componentsReducer'
 import styles from './index.module.scss'
 
 const Edit: FC = () => {

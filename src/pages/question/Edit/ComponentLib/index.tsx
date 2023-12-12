@@ -2,8 +2,8 @@ import React, { FC, useCallback } from 'react'
 import { nanoid } from 'nanoid'
 import { Typography } from 'antd'
 import { useDispatch } from 'react-redux'
-import { componentConfGroup, ComponentConfType } from '../../../../components/QuestionComponents'
-import { addComponent } from '../../../../store/componentsReducer'
+import { componentConfGroup, ComponentConfType } from '@/components/QuestionComponents'
+import { addComponent } from '@/store/componentsReducer'
 import styles from './index.module.scss'
 
 const { Title } = Typography

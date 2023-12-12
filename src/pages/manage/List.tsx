@@ -3,9 +3,9 @@ import { Typography, Spin, Empty } from 'antd'
 import { useTitle, useDebounceFn, useRequest } from 'ahooks'
 import { useSearchParams } from 'react-router-dom'
 import { getQuestionListService } from '../../services/question'
-import QuestionCard from '../../components/QuestionCard'
-import ListSearch from '../../components/ListSearch'
-import { LIST_PAGE_SIZE, LIST_SEARCH_PARAM_KEY } from '../../constants/index'
+import QuestionCard from '@/components/QuestionCard'
+import ListSearch from '@/components/ListSearch'
+import { LIST_PAGE_SIZE, LIST_SEARCH_PARAM_KEY } from '@/constants/index'
 import styles from './common.module.scss'
 
 const { Title } = Typography

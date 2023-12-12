@@ -67,6 +67,7 @@
     "@types/lodash.clonedeep": "^4.5.9",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
+    "craco-alias": "^3.0.1",
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",

@@ -10,7 +10,7 @@ import {
   ExclamationCircleOutlined,
 } from '@ant-design/icons'
 import { useRequest } from 'ahooks'
-import { updateQuestionService, duplicateQuestionService } from '../services/question'
+import { updateQuestionService, duplicateQuestionService } from '@/services/question'
 import styles from './QuestionCard.module.scss'
 
 type PropsType = {

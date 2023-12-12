@@ -22,8 +22,8 @@ import {
     selectPrevComponent,
     selectNextComponent,
     moveComponent
-} from '../../../../store/componentsReducer'
-import useGetComponentInfo from '../../../../hooks/useGetComponentInfo'
+} from '@/store/componentsReducer'
+import useGetComponentInfo from '@/hooks/useGetComponentInfo'
 
 const EditToolbar = () => {
     const dispatch = useDispatch()

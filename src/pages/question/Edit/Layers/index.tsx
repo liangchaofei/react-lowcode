@@ -3,16 +3,16 @@ import { message, Input, Button, Space } from 'antd'
 import { EyeInvisibleOutlined, LockOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
 import classNames from 'classnames'
-import useGetComponentInfo from '../../../../hooks/useGetComponentInfo'
+import useGetComponentInfo from '@/hooks/useGetComponentInfo'
 import {
   changeSelectedId,
   changeComponentTitle,
   changeComponentHidden,
   toggleComponentLocked,
   moveComponent
-} from '../../../../store/componentsReducer'
-import SortableContainer from '../../../../components/DragSortable/SortableContainer'
-import SortableItem from '../../../../components/DragSortable/SortableItem'
+} from '@/store/componentsReducer'
+import SortableContainer from '@/components/DragSortable/SortableContainer'
+import SortableItem from '@/components/DragSortable/SortableItem'
 import styles from './index.module.scss'
 
 const Layers: FC = () => {

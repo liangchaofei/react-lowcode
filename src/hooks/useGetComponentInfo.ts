@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
-import { StateType } from '../store'
-import { ComponentsStateType } from '../store/componentsReducer'
+import { StateType } from '@/store'
+import { ComponentsStateType } from '@/store/componentsReducer'
 
 function useGetComponentInfo() {
   // redux store

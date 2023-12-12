@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react'
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { Button, Space, Divider, message } from 'antd';
-import { useRequest} from 'ahooks';
-import { createQuestionService } from '../services/question';
+import { useRequest } from 'ahooks';
 import { PlusOutlined, BarsOutlined, StarOutlined, DeleteOutlined } from '@ant-design/icons'
+import { createQuestionService } from '@/services/question';
 import styles from './ManageLayout.module.scss'
 
 const ManageLayout: FC = () => {

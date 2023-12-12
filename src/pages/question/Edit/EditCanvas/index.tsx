@@ -2,16 +2,16 @@ import React, { FC } from 'react'
 import { Spin } from 'antd'
 import { useDispatch } from 'react-redux'
 import classNames from 'classnames'
-import useGetComponentInfo from '../../../../hooks/useGetComponentInfo'
-import { getComponentConfByType } from '../../../../components/QuestionComponents'
+import useGetComponentInfo from '@/hooks/useGetComponentInfo'
+import { getComponentConfByType } from '@/components/QuestionComponents'
 import {
     ComponentInfoType,
     changeSelectedId,
     moveComponent
-} from '../../../../store/componentsReducer'
-import useBindCanvasKeyPress from '../../../../hooks/useBindCanvasKeyPress'
-import SortableContainer from '../../../../components/DragSortable/SortableContainer'
-import SortableItem from '../../../../components/DragSortable/SortableItem'
+} from '@/store/componentsReducer'
+import useBindCanvasKeyPress from '@/hooks/useBindCanvasKeyPress'
+import SortableContainer from '@/components/DragSortable/SortableContainer'
+import SortableItem from '@/components/DragSortable/SortableItem'
 import styles from './index.module.scss'
 
 type PropsType = {

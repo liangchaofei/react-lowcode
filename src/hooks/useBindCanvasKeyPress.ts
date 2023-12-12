@@ -7,7 +7,7 @@ import {
   pasteCopiedComponent,
   selectPrevComponent,
   selectNextComponent
-} from '../store/componentsReducer'
+} from '@/store/componentsReducer'
 
 /**
  * 判断 activeElem 是否合法

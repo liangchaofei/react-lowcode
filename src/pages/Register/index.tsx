@@ -3,8 +3,8 @@ import { Typography, Space, Form, Input, Button, message } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRequest } from 'ahooks'
-import { LOGIN_PATHNAME } from '../../router'
-import { registerService } from '../../services/user'
+import { LOGIN_PATHNAME } from '@/router'
+import { registerService } from '@/services/user'
 import styles from './index.module.scss'
 
 const { Title } = Typography

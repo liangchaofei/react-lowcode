@@ -3,9 +3,9 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Typography, Space, Form, Input, Button, Checkbox, message } from 'antd'
 import { UserAddOutlined } from '@ant-design/icons'
 import { useRequest } from 'ahooks'
-import { REGISTER_PATHNAME, MANAGE_INDEX_PATHNAME } from '../../router'
-import { loginService } from '../../services/user'
-import { setToken } from '../../utils/user-token'
+import { REGISTER_PATHNAME, MANAGE_INDEX_PATHNAME } from '@/router'
+import { loginService } from '@/services/user'
+import { setToken } from '@/utils/user-token'
 import styles from './index.module.scss'
 
 const { Title } = Typography

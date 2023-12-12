@@ -1,12 +1,12 @@
 import { useSearchParams } from 'react-router-dom'
 import { useRequest } from 'ahooks'
-import { getQuestionListService } from '../services/question'
+import { getQuestionListService } from '@/services/question'
 import {
   LIST_SEARCH_PARAM_KEY,
   LIST_PAGE_PARAM_KEY,
   LIST_PAGE_SIZE_PARAM_KEY,
   LIST_PAGE_SIZE,
-} from '../constants/index'
+} from '@/constants/index'
 
 type OptionType = {
   isStar: boolean
