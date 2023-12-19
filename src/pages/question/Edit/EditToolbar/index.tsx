@@ -19,8 +19,6 @@ import {
     toggleComponentLocked,
     copySelectedComponent,
     pasteCopiedComponent,
-    selectPrevComponent,
-    selectNextComponent,
     moveComponent
 } from '@/store/componentsReducer'
 import useGetComponentInfo from '@/hooks/useGetComponentInfo'
